@@ -6,12 +6,12 @@ export default function movement() {
         dt,
     } = k
     const direction = vec2(0)
-    const speed = 16
+    const speed = 32
     let accumulatedTime = 0
     return {
-        add() {
-            this.movement.right()
-        },
+        // add() {
+        //     this.movement.right()
+        // },
 
         update() {
             accumulatedTime += dt()
