@@ -1,25 +1,26 @@
 import k from "../k_config"
+import { PosComp, GameObj } from "kaboom"
 
 export default function link() {
     const {
         vec2
     } = k
 
-    let child
+    let child: GameObj
     let isNew = true
     const nextPositon = vec2(0, 0)
     return {
-        add() {
+        add(this: PosComp) {
             nextPositon.x = this.pos.x
             nextPositon.y = this.pos.y
         },
         getChild() {
             return child
         },
-        setChild(c) {
+        setChild(c: GameObj) {
             child = c
         },
-        moveUpdate(x, y) {
+        moveUpdate(this: PosComp,  x:number, y:number,) {
             const pos = nextPositon.clone()
 
             nextPositon.x = x

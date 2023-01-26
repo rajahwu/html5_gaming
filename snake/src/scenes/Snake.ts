@@ -20,9 +20,9 @@ export default function Snake() {
 
     let score = 0
     const scoreText = add([
-        pos(2,2),
+        pos(2, 2),
         text(`score ${score}`),
-        color(255,255,255)
+        color(255, 255, 255)
     ])
 
     const spawner = add([
@@ -43,7 +43,7 @@ export default function Snake() {
 
     spawner.spawn()
 
-    onCollide('head', 'food', (head, food) => {
+    onCollide('food', 'head', (food) => {
         destroy(food)
         shake(3)
         score += 10
@@ -56,17 +56,20 @@ export default function Snake() {
             color(0, 255, 0,),
             origin('center'),
             link(),
-            area()
+            area(),
+            movement()
         ])
 
         end.setChild(newChild)
+        console.log(end)
         end = newChild
+        console.log(end)
 
         spawner.spawn()
     })
 
-    onCollide('head', 'body', (head, body) => {
-        if(body.isNew()) return
+    onCollide('body', 'head', (body) => {
+        if (body.isNew()) return
         go('game-over')
     })
 }

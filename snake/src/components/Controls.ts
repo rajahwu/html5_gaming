@@ -1,18 +1,22 @@
 import k from "../k_config"
+import type { GameObj } from 'kaboom'
 
 export default function controls() {
     const {
         onKeyPress
     } = k
-
+    let direction: string
     return {
-        add() {
+        add(this:GameObj) {
             onKeyPress('left', () => {
                 if (!this.movement) {
                     console.error('missing movement component')
                     return
                 }
-                this.movement.left()
+                if (direction !== 'right') {
+                    this.movement.left()
+                    direction = 'left'
+                }
             })
 
             onKeyPress('right', () => {
@@ -20,7 +24,11 @@ export default function controls() {
                     console.error('missing movement component')
                     return
                 }
-                this.movement.right()
+
+                if (direction !== 'left') {
+                    this.movement.right()
+                    direction = 'right'
+                }
             })
 
             onKeyPress('up', () => {
@@ -28,7 +36,10 @@ export default function controls() {
                     console.error('missing movement component')
                     return
                 }
-                this.movement.up()
+                if (direction !== 'down') {
+                    this.movement.up()
+                    direction = 'up'
+                }
             })
 
             onKeyPress('down', () => {
@@ -36,7 +47,10 @@ export default function controls() {
                     console.error('missing movement component')
                     return
                 }
-                this.movement.down()
+                if (direction !== 'up') {
+                    this.movement.down()
+                    direction = 'down'
+                }
             })
 
         }

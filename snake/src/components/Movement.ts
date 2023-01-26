@@ -1,4 +1,5 @@
 import k from "../k_config"
+import { PosComp, GameObj } from "kaboom"
 
 export default function movement() {
     const {
@@ -13,7 +14,7 @@ export default function movement() {
         //     this.movement.right()
         // },
 
-        update() {
+        update(this: GameObj & PosComp) {
             accumulatedTime += dt()
             if (accumulatedTime < 0.25) {
                 return
@@ -50,7 +51,7 @@ export default function movement() {
             down() {
                 direction.x = 0
                 direction.y = speed
-            }
+            } 
         }
     }
 }
