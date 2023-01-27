@@ -10,9 +10,6 @@ export default function movement() {
     const speed = 32
     let accumulatedTime = 0
     return {
-        // add() {
-        //     this.movement.right()
-        // },
 
         update(this: GameObj & PosComp) {
             accumulatedTime += dt()

@@ -1,20 +1,18 @@
 import k from "../k_config"
-import movement from "../components/Movement"
-import controls from "../components/Controls"
-import spawn from "../components/Spawn"
-import link from "../components/Link"
+import { movement, controls, link, spawn } from "../components"
 import getRandomPosition from "../utils/getRandomPosition"
 
 export default function Snake() {
     const {
         add,
         pos,
-        rect,
+        // rect,
         color,
         origin,
         destroy,
         shake,
         text,
+        sprite,
         go
     } = k
 
@@ -32,8 +30,7 @@ export default function Snake() {
     let end = add([
         'head',
         pos(getRandomPosition()),
-        rect(32, 32),
-        color(0, 255, 0,),
+        sprite('snakeHeadLeft'),
         origin('center'),
         movement(),
         controls(),
@@ -52,8 +49,7 @@ export default function Snake() {
         const newChild = add([
             'body',
             pos(end.pos.x, end.pos.y),
-            rect(32, 32),
-            color(0, 255, 0,),
+            sprite('snakeBody'),
             origin('center'),
             link(),
             area(),
@@ -61,9 +57,7 @@ export default function Snake() {
         ])
 
         end.setChild(newChild)
-        console.log(end)
         end = newChild
-        console.log(end)
 
         spawner.spawn()
     })

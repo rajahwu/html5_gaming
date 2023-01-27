@@ -15,9 +15,5 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "typedocOptions": {
-    "entryPoints": ["src/main.ts", "src/components/index.ts", "src/scenes/index.ts"],
-    "out": "public/docs"
-},
   "include": ["src"]
 }

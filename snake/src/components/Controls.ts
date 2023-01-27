@@ -9,12 +9,14 @@ export default function controls() {
     return {
         add(this:GameObj) {
             onKeyPress('left', () => {
+                
                 if (!this.movement) {
                     console.error('missing movement component')
                     return
                 }
                 if (direction !== 'right') {
                     this.movement.left()
+                    this.use(sprite('snakeHeadLeft'))
                     direction = 'left'
                 }
             })
@@ -27,6 +29,7 @@ export default function controls() {
 
                 if (direction !== 'left') {
                     this.movement.right()
+                    this.use(sprite('snakeHeadRight'))
                     direction = 'right'
                 }
             })
@@ -38,6 +41,7 @@ export default function controls() {
                 }
                 if (direction !== 'down') {
                     this.movement.up()
+                    this.use(sprite('snakeHeadUp'))
                     direction = 'up'
                 }
             })
@@ -49,6 +53,7 @@ export default function controls() {
                 }
                 if (direction !== 'up') {
                     this.movement.down()
+                    this.use(sprite('snakeHeadDown'))
                     direction = 'down'
                 }
             })
