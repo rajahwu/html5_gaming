@@ -17,4 +17,4 @@ export default {
       debug: false
     }
   }
-};
+} as Phaser.Types.Core.GameConfig;
