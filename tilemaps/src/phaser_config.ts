@@ -9,6 +9,12 @@ export default {
         height: 250,
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 }
+        }
     }
-    
+
 } as Phaser.Types.Core.GameConfig
